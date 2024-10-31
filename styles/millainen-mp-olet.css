@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* App.css */
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* App.css */
+
+/* Taustakontti */
+.background-container {
+  background-image: url('../images/mp-visa-kuva.jpg'); /* Taustakuva */
+  background-size: cover; /* Koko näytön kattava */
+  background-position: center;
+  width: 100vw;
+  height: 100vh; /* Koko ruudun kokoinen */
+  display: flex;
+  justify-content: center; /* Sisältö keskitetty vaakasuunnassa */
+  align-items: center; /* Sisältö keskitetty pystysuunnassa */
+}
+
+/* Sisällön kontti */
+.content-container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Varjo sisällölle */
+  max-width: 500px;
+  width: 100%;
+  height: 60vh;
+  text-align: center; /* Tekstin keskitys */
+  opacity: 0.95;
+}
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.form-container h1 {
+  margin-bottom: 30px;
+}
+
+.form-container p {
+    margin-top: 20px;
+    font-size: 12px;
+    width: 300px;
+  }
+
+
+.contact-input {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background-color: #f4f4f4;
+  width: 60%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+
+
+.aloita-button {
+    padding: 10px 20px;
+    width: 250px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+.birra-solutions {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #888;
+  text-align: center;
+}
+
+.container-questions {
+    margin-top: 30px;
+    color: black;
+    text-align: center;
+    transition: opacity 0.5s ease-in;
+    opacity: 1;
+  }
+  
+  .container-questions h2 {
+    margin-bottom: 20px;
+  }
+  
+  
+  .fade-out {
+    opacity: 0;
+  }
+  
+  .fade-in {
+    opacity: 1;
+  }
+  
+  
+  .vastaus-button {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    padding: 20px 10px;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    height: 80px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  
+  .vastaus-vaihto-ehdot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .tarjous-container {
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    opacity: 1;
+  }
+  
+  .fade-out {
+    opacity: 0;
+  }
+  
+  .fade-in {
+    opacity: 1;
+  }
+  
+  .tarjous-container .tarjous-teksti {
+    font-weight: 600;
+  }
+  
+  .tarjous-container button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .tarjous-btn {
+    background-color: #007bff;
+    padding: 20px 40px;
+    font-weight: 600;
+    color: white;
+    margin-top: 20px;
+  }
+  
+  .tulos-btn {
+    background-color: #999;
+    padding: 10px 20px;
+    color: white;
+  }
+
+
+
+.car-icon {
+  font-size: 10vh;
+}
+
+.container-result h2 {
+  font-size: 30px;
+}
+
+.container-result p {
+  padding: 20px;
+}
+
+
+.sulje-testi {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@media (max-width: 1300px) {
+  .content-container {
+    height: 90vh;
+  }
+
+  .container-questions {
+    margin-top: 0;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 780px) { 
+  .content-container {
+    max-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    margin-bottom: 150px;
+  }
+
+  .content-container h1 {
+    font-size: 28px;
+  }
+
+  .form-container {
+    margin-top: 0;
+  }
+
+  .contact-input {
+    width: 250px;
+  }
+
+  .vastaus-button {
+    width: 325px;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .container-questions {
+    margin-top: 0;
+    text-align: center;
+  }
+}
+
+

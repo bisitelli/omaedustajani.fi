@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f4
+}
+
+.landing-page {
+  text-align: start;
+}
+
+.header {
+  background-color: #f4f4f4;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #f4f4f4;
+  padding: 50px 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 70px;
+  margin: 20px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.contact-form {
+  padding: 30px 100px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+
+  .navbar {
+    margin-bottom: 0;
+  }
+
+  .navbar img {
+    display: none;
+  }
+  
+  .hero {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column; /* Asetetaan sisällöt allekkain */
+    align-items: center; /* Keskitetään sisällöt */
+    padding: 20px; /* Vähennetään tilaa */
+  }
+
+  .hero-content {
+    text-align: flex-start; /* Keskitetään teksti mobiililaitteilla */
+    margin-bottom: 20px; /* Lisätään väliä */
+  }
+
+  .hero-content h1 {
+    font-size: 50px;
+  }
+
+  .contact-form {
+    padding: 30px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%; /* Tehdään lomake koko leveydelle */
+    max-width: auto; /* Asetetaan maksimi leveys */
+  }
+
+  .features {
+    display: none;
+  }
+
+  .logo-mobiili {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer {
+    max-width: auto;
+  }
+
+}
+
+#autovakuutus-container, #kotivakuutus-container, #henkilovakuutus-container, #lemmikkivakuutus-container {
+  display: flex;
+  align-items: center; /* Kohdista teksti ja checkbox vertikaalisesti keskelle */
+}
+
+label{
+  display: flex;
+  justify-content: center;
+  padding: 12px 12px; /* Kohdista checkbox ja teksti */
+  background-color: #f5f5f5;
+  margin: 3px;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, .2);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+
+}
+
+input[type="checkbox"]
+{
+    display: none;
+}
+
+input[type="checkbox"]:checked + label{
+    background-color: #007bff;
+    color: #ffffff;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, .2);
+}
+
+.dropdown-btn-yhtiot {
+  background-color: #f4f4f4;
+  border: none;
+  padding: 16px 12px;
+  width: 325px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .5s;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, .2);
+}
+
+/* Dropdown container (ylempi elementti) */
+.dropdown-yhtiot {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdownin sisältö (piilotettu oletuksena) */
+.dropdown-content-yhtiot {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Dropdownin linkit */
+.dropdown-content-yhtiot a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Hover-efekti linkeille */
+.dropdown-content-yhtiot a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Kun .dropdown-yhtiot saa hoverin, näytä sisältö */
+.dropdown-yhtiot .dropdown-content-yhtiot {
+  display: block;
+  max-width: 300px;
+}
+
+.selected-companies {
+  margin-top: 10px;
+  padding: 0;
+  list-style-type: none;
+  color: #fff;
+  font-size: 12px;
+  gap: 1px;
+}
+
+.selected-item {
+  padding: 6px 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.remove-item {
+  margin-left: 5px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.yhteystiedot-form input {
+  width: 300px;
+  padding: 12px 12px;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 8px;
+  margin-top: 5px;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, .2);
+}
+
+.laheta-btn-div {
+  display: flex;
+  justify-content: center;
+
+}
+
+.laheta-btn {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 30px;
+  padding: 15px;
+  width: 300px;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+
+.powered-by-birrasolutions {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: #b7b7b7;
+  cursor: pointer;
+}
+
+
+.features {
+  padding: 40px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #ffffff;
+}
+
+.card {
+  padding: 20px;
+  background-color: #007bff;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  width: 300px;
+  text-align: start;
+}
+
+.card h1 {
+  font-size: 28px;
+}
+
+.logo-mobiili {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .logo-mobiili {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+
+.footer {
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  font-size: 14px;
+}

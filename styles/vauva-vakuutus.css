@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #333;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.welcome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.welcome-box {
+  position: relative;
+  background-image: url('../images/pampers-proto5.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  padding: 40px;
+  width: 700px;
+  height: 350px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.welcome-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3); /* Musta overlay 50% läpinäkyvyydellä */
+  border-radius: 12px; /* Sama pyöristys kuin welcome-boxissa */
+  z-index: 1; /* Varmistaa, että overlay pysyy taustalla */
+}
+
+
+.welcome-box h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f4f4f4;
+  position: relative;
+  z-index: 2;
+}
+
+
+.start-button {
+  background-color: #888888;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  z-index: 2;
+}
+
+.start-button:hover {
+  background-color: #999999;
+}
+
+.libero-logo {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 80px;
+  z-index: 2;
+}
+
+
+.content {
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 700px;
+  width: 100%;
+  height: 400px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.image-section {
+  flex: 1.2;
+  background-color: #f0f0f0;
+}
+
+.ultrasound-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.question-section {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  
+}
+
+h1 {
+  font-size: 1.1rem;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  background-color: #f0f0f0;
+  width: 300px;
+  border: none;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.option:hover {
+  background-color: #e0e0e0;
+}
+
+.selected {
+  background-color: #c4e7ff;
+}
+
+.results-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../images/result-kuva.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
+
+.results-content-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #ffffff;
+  width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0.95;
+}
+
+.results-info-section {
+  padding: 40px 10px;
+  border-right: 1px solid #dddddd;
+}
+
+.results-info-section h2 {
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.results-info-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.results-info-section li {
+  margin-top: 20px;
+  font-size: 0.83em;
+  color: #333333;
+  font-weight: 600;
+}
+
+.results-form-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.results-form-section h2 {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.results-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+.results-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #32CD32;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+
+.footer {
+  color: #888;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
