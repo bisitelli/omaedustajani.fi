@@ -1,12 +1,18 @@
 const nodemailer = require('nodemailer');
 
 export default async function handler(req, res) {
+  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).send({ message: 'Only POST requests allowed' });
   }
 
   const formData = req.body;
   const { surveyType, name, phone, email, answers } = formData;
+
+  // Check if answers is valid
+  if (!answers || typeof answers !== 'object') {
+    return res.status(400).send({ message: 'Answers are missing or invalid' });
+  }
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -16,59 +22,52 @@ export default async function handler(req, res) {
     },
   });
 
-  // Muodosta sähköpostiviestin sisältö eri kyselytyypeille
+  // Start building the email content
   let messageText = `Nimi: ${name}\nPuhelin: ${phone}`;
   if (email) {
     messageText += `\nSähköposti: ${email}`;
   }
 
+  // Build survey-specific message text
   if (surveyType === 'Auto') {
-    // Auto-kyselyn viesti
-    messageText += `\n\nAuto-kyselyn vastaukset:\n`;
-    messageText += Object.entries(answers)
-      .map(([question, answer]) => `${question}: ${answer}`)
-      .join('\n');
-    messageText += `\nTarjouksen haluaminen: ${answers.wantsOffer ? 'Kyllä' : 'Ei'}`;
-    
+    messageText += buildSurveyMessage('Auto-kyselyn', answers);
   } else if (surveyType === 'Moottoripyörä') {
-    // Moottoripyörä-kyselyn viesti
-    messageText += `\n\nMoottoripyörä-kyselyn vastaukset:\n`;
-    messageText += Object.entries(answers)
-      .map(([question, answer]) => `${question}: ${answer}`)
-      .join('\n');
-
+    messageText += buildSurveyMessage('Moottoripyörä-kyselyn', answers);
   } else if (surveyType === 'Vauvavakuutus') {
-    // Vauvavakuutus-kyselyn viesti
-    messageText += `\n\nVauvavakuutus-kyselyn vastaukset:\n`;
-    messageText += Object.entries(answers)
-      .map(([question, answer]) => `${question}: ${answer}`)
-      .join('\n');
-
+    messageText += buildSurveyMessage('Vauvavakuutus-kyselyn', answers);
   } else if (surveyType === 'Vakuutustiedot') {
-    // Vakuutustiedot-kyselyn viesti
-    messageText += `\n\nVakuutustiedot-kyselyn vastaukset:\n`;
-    messageText += Object.entries(answers)
-      .map(([question, answer]) => `${question}: ${answer}`)
-      .join('\n');
+    messageText += buildSurveyMessage('Vakuutustiedot-kyselyn', answers);
   } else {
-    // Muut kyselyt, yleinen viesti
-    messageText += `\n\nVastaukset kyselyyn (${surveyType}):\n`;
-    messageText += Object.entries(answers)
-      .map(([question, answer]) => `${question}: ${answer}`)
-      .join('\n');
+    messageText += buildSurveyMessage(`Kyselyn (${surveyType})`, answers);
   }
 
+  // Define mail options
   const mailOptions = {
-    from: email || process.env.AUTH_EMAIL,
-    to: 'julius.sciarra@if.fi', // Korvaa omalla sähköpostiosoitteella
+    from: email || process.env.AUTH_EMAIL, // Fallback to AUTH_EMAIL if no email provided
+    to: 'julius.sciarra@if.fi', // Replace with your own email address
     subject: `Tarjouspyyntö - ${surveyType}`,
     text: messageText,
   };
 
+  // Send the email and handle success or failure
   try {
     const info = await transporter.sendMail(mailOptions);
     res.status(200).send('Sähköposti lähetetty ' + info.response);
   } catch (error) {
     res.status(500).send(error.toString());
   }
+}
+
+// Helper function to build the message text for each survey
+function buildSurveyMessage(surveyName, answers) {
+  let message = `\n\n${surveyName} vastaukset:\n`;
+  // Iterate over the answers and format them
+  message += Object.entries(answers)
+    .map(([question, answer]) => `${question}: ${answer}`)
+    .join('\n');
+  // If there's a "wantsOffer" field, append it
+  if (answers.wantsOffer !== undefined) {
+    message += `\nTarjouksen haluaminen: ${answers.wantsOffer ? 'Kyllä' : 'Ei'}`;
+  }
+  return message;
 }
