@@ -140,54 +140,65 @@ function App() {
               <label htmlFor="lemmikkivakuutus">Lemmikki</label>
             </div>
 
-            <div className="dropdown-yhtiot">
+            <div className='dropdown-yhtiot'>
               <h3>Valitse nykyinen yhtiösi:</h3>
-              <button type="button" onClick={toggleDropdown}>
+              <button type='button' className='dropdown-btn-yhtiot' onClick={toggleDropdown}>
                 Valitse nykyinen yhtiösi
               </button>
               {isDropdownOpen && (
-                <div>
+                <div className='dropdown-content-yhtiot'>
                   {['Op Pohjola', 'Lähitapiola', 'Fennia', 'Turva', 'Pohjantähti', 'Pop Vakuutus', 'Muu'].map((company) => (
                     <a href="#" key={company} onClick={(e) => {
                       e.preventDefault();
                       handleCompanySelection(company);
-                    }}>{company}</a>
+                    }}>
+                      {company}
+                    </a>
                   ))}
                 </div>
               )}
               {selectedCompanies.length > 0 && (
-                <ul>
+                <ul className='selected-companies'>
                   {selectedCompanies.map((company) => (
-                    <li key={company}>
+                    <li key={company} className='selected-item'>
                       {company}
-                      <span onClick={() => handleCompanySelection(company)}> ✖ </span>
+                      <span className='remove-item' onClick={() => handleRemoveCompany(company)}> ✖ </span>
                     </li>
                   ))}
                 </ul>
               )}
+              <p>ⓘ voit valita useita</p>
             </div>
 
-            <div>
+            {/* Yhteystiedot */}
+            <div className='yhteystiedot-form'>
               <h3>Täytä yhteystietosi:</h3>
               <input
-                type="email"
-                name="email"
-                placeholder="Sähköposti"
+                type='email'
+                name='email'
+                placeholder='Sähköposti'
                 required
                 value={formData.email}
                 onChange={handleChange}
               />
+              <br />
               <input
-                type="tel"
-                name="tele"
-                placeholder="Puhelinnumero"
+                type='tel'
+                name='tele'
+                placeholder='Puhelinnumero'
                 required
                 value={formData.tele}
                 onChange={handleChange}
               />
             </div>
 
-            <button type="submit">Lähetä</button>
+            <div className='laheta-btn-div'>
+              <button type='submit' className='laheta-btn' id='laheta-btn'>Lähetä</button>
+            </div>
+
+            <div className='powered-by-birrasolutions'>
+              <p>Powered by Birra Solutions</p>
+            </div>
           </form>
         </div>
       </section>
