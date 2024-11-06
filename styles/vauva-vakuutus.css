@@ -28,7 +28,7 @@ body {
 
 .welcome-box {
   position: relative;
-  background-image: url('../images/pampers-proto5.jpg');
+  background-image: url('/images/pampers-proto5.jpg');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -91,7 +91,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
-  height: 80px;
+  height: 65px;
   z-index: 2;
 }
 
@@ -163,7 +163,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../images/result-kuva.jpg');
+  background-image: url('/images/result-kuva.jpg');
   background-size: cover;
   background-position: center;
   border-radius: 10px;
@@ -240,4 +240,70 @@ h1 {
   color: #888;
   font-size: 0.7rem;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .welcome-box {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .content {
+    flex-direction: column; /* Muutetaan suunta pystysuoraksi */
+    height: 100vh;
+    width: 100%;
+    border-radius: 5;
+  }
+
+  .image-section {
+    flex: none; /* Poistetaan joustavuus */
+    width: 100%; /* Kuvan osuus täyttää koko leveys */
+    height: 40vh; /* Kuvan korkeus pienennetään sopivaksi */
+  }
+
+  .question-section {
+    flex: none; /* Poistetaan joustavuus */
+    width: 100%; /* Kysymysten osuus täyttää koko leveys */
+    height: 100vh;
+    padding: 20px; /* Vähennetään tilaa */
+  }
+
+  .ultrasound-image {
+    object-fit: cover;
+    height: 100%; /* Kuvan korkeus täyttää säilön */
+  }
+
+  .results-container {
+    display: flex;
+    flex-direction: column; /* Asetellaan sisältö päällekkäin */
+    height: 100vh;
+    width: 100%; /* Poistetaan kiinteä korkeus mobiililaitteilla */
+    
+  }
+
+  .results-content-box {
+    display: flex; /* Käytetään flexboxia mobiililaitteilla */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Asetellaan sisällöt pystysuunnassa */
+    width: 100%;
+    height: 100vh; /* Varmistetaan, että leveys vie koko tilan */
+    box-shadow: none; /* Poistetaan varjo, jos se ei ole tarpeen */
+    opacity: 1; /* Takataan, ettei läpinäkyvyys ole liian matala */
+    border-radius: 0;
+  }
+
+  .results-info-section {
+    padding: 20px; /* Lisää paddingia mobiilissa */
+    border-right: none; /* Poistetaan oikeanpuoleinen raja */
+    border-bottom: 1px solid #dddddd; /* Lisätään alaosan raja, jotta erottelu näkyy */
+  }
+
+  .footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

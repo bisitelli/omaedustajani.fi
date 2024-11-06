@@ -1,24 +1,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import kysymys1 from '../images/1.png';
-import kysymys2 from '../images/2.png';
-import kysymys3 from '../images/3.png';
-import kysymys4 from '../images/4.png';
-import kysymys5 from '../images/5.png';
-import kysymys6 from '../images/6.png';
-import kysymys7 from '../images/7.png';
-import kysymys8 from '../images/8.png';
 import '../styles/vauva-vakuutus.css';
 
 function Question({ setAnswers, onComplete }) {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
 
-    // Kysymykset ja kuvat
     const questions = [
         {
             question: 'Onko sinulla tällä hetkellä harkinnassa vakuutuksen ottaminen syntymättömälle lapselle?',
-            image: kysymys1,
+            image: '/images/1.png',
             options: [
                 'Kyllä, olen jo ottanut',
                 'Kyllä, harkitsen vielä',
@@ -27,7 +18,7 @@ function Question({ setAnswers, onComplete }) {
         },
         {
             question: 'Kuinka tärkeänä pidät, että lapsesi on vakuutettu jo ennen syntymää?',
-            image: kysymys2,
+            image: '/images/2.png',
             options: [
                 'Erittäin tärkeänä',
                 'Melko tärkeänä',
@@ -36,7 +27,7 @@ function Question({ setAnswers, onComplete }) {
         },
         {
             question: 'Tiesitkö, että syntymättömän lapsen vakuutus kattaa myös mahdollisia synnytyksessä tapahtuvia vahinkoja sekä äidille että lapselle?',
-            image: kysymys3,
+            image: '/images/3.png',
             options: [
                 'Kyllä, tiedän tämän',
                 'Ei, tämä oli uutta tietoa',
@@ -44,7 +35,7 @@ function Question({ setAnswers, onComplete }) {
         },
         {
             question: 'Miten tärkeänä pidät sitä, että perheellä on taloudellista turvaa yllättävien terveyshaasteiden varalle jo ennen lapsen syntymää?',
-            image: kysymys4,
+            image: '/images/4.png',
             options: [
                 'Erittäin tärkeänä',
                 'Kohtalaisen tärkeänä',
@@ -53,7 +44,7 @@ function Question({ setAnswers, onComplete }) {
         },
         {
             question: 'Tiesitkö, että lapsen vakuutus mahdollistaa nopeamman hoitoon pääsyn ja erikoislääkärikäynnit ilman pitkää jonotusta?',
-            image: kysymys5,
+            image: '/images/5.png',
             options: [
                 'Kyllä, tiedän tämän',
                 'Ei, tämä oli uutta tietoa'
@@ -61,7 +52,7 @@ function Question({ setAnswers, onComplete }) {
         },
         {
             question: 'Kuinka tärkeää sinulle on mielenrauha siitä, että lapsesi hoitokulut ovat katettuina yllättävien tilanteiden varalta?',
-            image: kysymys6,
+            image: '/images/6.png',
             options: [
                 'Erittäin tärkeää',
                 'Melko tärkeää',
@@ -70,7 +61,7 @@ function Question({ setAnswers, onComplete }) {
         },
         {
             question: 'Tiesitkö, että syntymättömän lapsen vakuutus kattaa myös lapsen hänen kasvaessaan?',
-            image: kysymys7,
+            image: '/images/7.png',
             options: [
                 'Kyllä, tiesin tämän',
                 'Ei, tämä oli uutta tietoa'
@@ -78,7 +69,7 @@ function Question({ setAnswers, onComplete }) {
         },
         {
             question: 'Mikä merkitsee sinulle eniten, kun valitset vakuutusta syntymättömälle lapsellesi?',
-            image: kysymys8,
+            image: '/images/8.png',
             options: [
                 'Vakuutuksen kattavuus',
                 'Vakuutuksen hinta',
@@ -88,22 +79,21 @@ function Question({ setAnswers, onComplete }) {
         },
     ];
 
-    // Tallenna vastaukset
     const handleOptionChange = (option) => {
         setSelectedOption(option);
         setAnswers(prevAnswers => ({
             ...prevAnswers,
-            [`question${currentQuestionIndex + 1}`]: option // Tallenna vastaus
+            [`question${currentQuestionIndex + 1}`]: option
         }));
 
         setTimeout(() => {
             if (currentQuestionIndex < questions.length - 1) {
                 setCurrentQuestionIndex(currentQuestionIndex + 1);
-                setSelectedOption(null); // Resetoi valinta seuraavaa kysymystä varten
+                setSelectedOption(null);
             } else {
-                onComplete();
+                onComplete();  // Kyselyn valmistuessa kutsutaan onComplete-funktiota
             }
-        }, 500); // Pieni viive palautteen antamiseksi
+        }, 500);
     };
 
     return (
@@ -112,6 +102,8 @@ function Question({ setAnswers, onComplete }) {
                 <Image
                     src={questions[currentQuestionIndex].image}
                     alt="Question Related"
+                    width={500}
+                    height={500}
                     className="ultrasound-image"
                 />
             </div>
@@ -129,7 +121,6 @@ function Question({ setAnswers, onComplete }) {
                     ))}
                 </div>
 
-                {/* Footer-teksti sisällön sisällä */}
                 <footer className="footer">
                     Powered by Birra Solutions
                 </footer>

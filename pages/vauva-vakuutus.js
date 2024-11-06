@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
-import '../styles/vauva-vakuutus.css'
+import Image from 'next/image'; // Ei muuta, koska käytämme Image-komponenttia Next.js:ssä
+import '../styles/vauva-vakuutus.css';
 import Question from '../components/question-vauva';
 import Results from '../components/result-vauva';
-import liberoLogo from '../images/Libero-logo-1.png';
 
 function App() {
   const [step, setStep] = useState(1); // Alustetaan steppi 1
+  const [answers, setAnswers] = useState({}); // Alustetaan vastaukset
 
   // Siirrytään seuraavaan vaiheeseen
   const nextStep = () => setStep(step + 1);
@@ -22,24 +22,24 @@ function App() {
       {step === 1 && (
         <div className="welcome-container">
           <div className="welcome-box">
-            <h2>Vastaa kyselyyn ja voita vuoden vaipat!</h2>
             <button onClick={nextStep} className="start-button">
-              Aloita
+              Aloita kysely
             </button>
-            <Image src={liberoLogo} alt='libero-logo' className='libero-logo' />
+            {/* Käytetään kuvaa public-kansiosta ilman importia */}
+            <Image src="/images/Libero-logo-1.png" alt='libero-logo' className='libero-logo' width={150} height={30} />
           </div>
         </div>
       )}
       
       {step === 2 && (
         <div>
-          <Question onNext={nextStep} onBack={prevStep} onComplete={handleComplete} />
+          <Question setAnswers={setAnswers} onNext={nextStep} onBack={prevStep} onComplete={handleComplete} />
         </div>
       )}
       
       {step === 3 && (
         <div>
-          <Results />
+          <Results answers={answers} />
         </div>
       )}
     </div>

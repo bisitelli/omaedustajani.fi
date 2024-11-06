@@ -75,7 +75,7 @@ function App() {
             />
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             <button className='aloita-button' onClick={handleSubmitUser}>Aloita testi!</button>
-            <p>Lisää yhteystietosi niin pääset täyttämään testin. Yhteystietoja ei jaeta eteenpäin. Jättämällä yhteystietosi olet mukana arvonnassa.</p>
+            <p>Lisää yhteystietosi niin pääset täyttämään testin. Yhteystietoja ei luovuteta kolmasille osapuolille. Jättämällä yhteystietosi olet mukana arvonnassa.</p>
             <p className='birra-solutions'>Powered by Birra Solutions</p>
           </div>
         )}

@@ -13,7 +13,7 @@
 
 /* Taustakontti */
 .background-container {
-  background-image: url('../images/auto-visa-kuva2.jpg'); /* Taustakuva */
+  background-image: url('/images/auto-visa-kuva2.jpg'); /* Taustakuva */
   background-size: cover; /* Koko näytön kattava */
   background-position: center;
   width: 100vw;

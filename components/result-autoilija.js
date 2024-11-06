@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import '../styles/millainen-autoilija-olet.css';
-import FormulakuskiImage from '../images/formulakuskiImage.jpg';
-import TurvallinenImage from '../images/turvallinenImage.jpg';
-import SeikkalijaImage from '../images/seikkailijaImage2.jpg';
-import LuonnonYstvavaImage from '../images/luonnonystavaImage.jpg';
 
 function Result({ answers, resetTest }) {
   const [fade, setFade] = useState('fade-in');
 
   useEffect(() => {
-    // Tämä efekti laukaisee fade-in animaation, kun komponentti ladataan
+    // Käynnistä fade-in animaatio, kun komponentti ladataan
     setFade('fade-in');
   }, []);
 
@@ -30,12 +26,13 @@ function Result({ answers, resetTest }) {
     ];
 
     const resultImages = [
-      FormulakuskiImage,
-      TurvallinenImage,
-      SeikkalijaImage,
-      LuonnonYstvavaImage
+      '/images/formulakuskiImage.jpg',
+      '/images/turvallinenImage.jpg',
+      '/images/seikkailijaImage2.jpg',
+      '/images/luonnonystavaImage.jpg'
     ];
 
+    // Laske tulos pisteiden mukaan
     const score = Object.values(answers).reduce((total, answer) => {
       if (
         answer === 'Alle 2 vuotta vanha - uutuuden huumaa!' ||
@@ -73,12 +70,13 @@ function Result({ answers, resetTest }) {
 
       return total; // Varmista, että jokaiselle vastaukselle palautetaan total
     }, 0);
-    
+
+    // Päätä tulostyyppi pistemäärän perusteella
     let resultIndex;
-    if (score >= 12) resultIndex = 0; // Oikea indeksi
-    else if (score >= 8) resultIndex = 1; // Oikea indeksi
-    else if (score >= 5) resultIndex = 2; // Oikea indeksi
-    else resultIndex = 3; // Oikea indeksi
+    if (score >= 12) resultIndex = 0;
+    else if (score >= 8) resultIndex = 1;
+    else if (score >= 5) resultIndex = 2;
+    else resultIndex = 3;
 
     return {
       type: resultTypes[resultIndex],
@@ -92,7 +90,7 @@ function Result({ answers, resetTest }) {
   return (
     <div className={`result-container ${fade}`}>
       <h2>Olet {result.type}</h2>
-      <Image src={result.image} alt={result.type} className="result-image" />
+      <Image src={result.image} alt={result.type} className="result-image" width={350} height={300}  />
       <p>{result.description}</p>
       <button type='submit' className='sulje-testi' onClick={resetTest}>Sulje testi</button>
       <p className='birra-solutions'>Powered by Birra Solutions</p>

@@ -12,7 +12,7 @@
 
 /* Taustakontti */
 .background-container {
-  background-image: url('../images/mp-visa-kuva.jpg'); /* Taustakuva */
+  background-image: url('/images/mp-visa-kuva.jpg'); /* Taustakuva */
   background-size: cover; /* Koko näytön kattava */
   background-position: center;
   width: 100vw;

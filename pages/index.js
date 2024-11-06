@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/app.css'; // Oletetaan, että CSS-tyylit on määritelty
-import Image from 'next/image';
-import logo from '../images/If-logo.svg';
+import Image from 'next/image'; // Käytetään next/image-komponenttia
 
 function App() {
   const [formData, setFormData] = useState({
@@ -62,7 +61,7 @@ function App() {
     };
 
     // Lähetetään data palvelimelle
-    fetch('http://localhost:5000/send-email', {
+    fetch('../api/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -114,7 +113,8 @@ function App() {
       {/* Ylätunniste */}
       <header className="header">
         <nav className="navbar">
-          <Image src={logo} />
+          {/* Logo tuo suoraan public-kansiosta ilman import-komentoa */}
+          <Image src="/images/If-logo.svg" alt="If Logo" width={500} height={200} />
         </nav>
       </header>
 
@@ -234,34 +234,6 @@ function App() {
           </form>
         </div>
 
-      </section>
-
-      {/* Ominaisuudet */}
-      <section id="features" className="features" style={{display: 'none'}}>
-        <h2>Arvosteluja</h2>
-        <div className="feature-cards">
-          <div className="card">
-            <h1>Juha</h1>
-            <h3>Paras edustaja ikinä</h3>
-          </div>
-          <div className="card">
-            <h1>Pasi</h1>
-            <h3>Hyvä jätkä! Vie nykyään pojan jääkiekko treeneihin.</h3>
-          </div>
-          <div className="card">
-            <h1>Sampo</h1>
-            <h3>Säästin vakuutuksissa 50 %!</h3>
-          </div>
-          <div className="card">
-            <h1>Minna</h1>
-            <h3>Tarjosin tytärtäni puhelun jälkeen.</h3>
-          </div>
-        </div>
-      </section>
-
-      {/* Yhteystiedot */}
-      <section id="contact" className="logo-mobiili">
-        <img src={logo}></img>
       </section>
 
       {/* Footer */}
