@@ -16,21 +16,51 @@ export default async function handler(req, res) {
     },
   });
 
-  // Muodosta sähköpostiviestin sisältö surveyType:n mukaan
+  // Muodosta sähköpostiviestin sisältö eri kyselytyypeille
   let messageText = `Nimi: ${name}\nPuhelin: ${phone}`;
   if (email) {
     messageText += `\nSähköposti: ${email}`;
   }
-  if (answers && Object.keys(answers).length > 0) {
+
+  if (surveyType === 'Auto') {
+    // Auto-kyselyn viesti
+    messageText += `\n\nAuto-kyselyn vastaukset:\n`;
+    messageText += Object.entries(answers)
+      .map(([question, answer]) => `${question}: ${answer}`)
+      .join('\n');
+    messageText += `\nTarjouksen haluaminen: ${answers.wantsOffer ? 'Kyllä' : 'Ei'}`;
+    
+  } else if (surveyType === 'Moottoripyörä') {
+    // Moottoripyörä-kyselyn viesti
+    messageText += `\n\nMoottoripyörä-kyselyn vastaukset:\n`;
+    messageText += Object.entries(answers)
+      .map(([question, answer]) => `${question}: ${answer}`)
+      .join('\n');
+
+  } else if (surveyType === 'Vauvavakuutus') {
+    // Vauvavakuutus-kyselyn viesti
+    messageText += `\n\nVauvavakuutus-kyselyn vastaukset:\n`;
+    messageText += Object.entries(answers)
+      .map(([question, answer]) => `${question}: ${answer}`)
+      .join('\n');
+
+  } else if (surveyType === 'Vakuutustiedot') {
+    // Vakuutustiedot-kyselyn viesti
+    messageText += `\n\nVakuutustiedot-kyselyn vastaukset:\n`;
+    messageText += Object.entries(answers)
+      .map(([question, answer]) => `${question}: ${answer}`)
+      .join('\n');
+  } else {
+    // Muut kyselyt, yleinen viesti
     messageText += `\n\nVastaukset kyselyyn (${surveyType}):\n`;
-    messageText += Object.entries(answers).map(
-      ([question, answer]) => `${question}: ${answer}`
-    ).join('\n');
+    messageText += Object.entries(answers)
+      .map(([question, answer]) => `${question}: ${answer}`)
+      .join('\n');
   }
 
   const mailOptions = {
-    from: email || process.env.AUTH_EMAIL,  // Oletuslähettäjä, jos käyttäjän sähköposti puuttuu
-    to: 'julius.sciarra@if.fi',  // Korvaa omalla sähköpostiosoitteella
+    from: email || process.env.AUTH_EMAIL,
+    to: 'julius.sciarra@if.fi', // Korvaa omalla sähköpostiosoitteella
     subject: `Tarjouspyyntö - ${surveyType}`,
     text: messageText,
   };
