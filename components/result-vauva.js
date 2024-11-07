@@ -7,14 +7,14 @@ function Result() {
     const [phone, setPhone] = useState('');
     const [submissionStatus, setSubmissionStatus] = useState('');
 
-    const handleSubmit = async (event) => {
-        event.preventDefault(); // Estää lomakkeen oletustoiminnon (sivun uudelleenlataus)
-
+    // Tämä on uusi handleSubmit ilman event-parametria
+    const handleSubmit = async () => {
         const formData = {
             name,
             email,
             phone,
             answers,
+            surveyType: 'Vauvavakuutus',
         };
 
         try {
@@ -27,14 +27,15 @@ function Result() {
             });
 
             if (response.ok) {
-                console.log('Sähköposti lähetetty onnistuneesti');
+                setSubmissionStatus('Sähköposti lähetetty onnistuneesti');
             } else {
-                console.log('Virhe sähköpostin lähetyksessä');
+                setSubmissionStatus('Virhe sähköpostin lähetyksessä');
             }
-            } catch (error) {
-                console.error('Virhe:', error);
-            }
-        };
+        } catch (error) {
+            console.error('Virhe:', error);
+            setSubmissionStatus('Virhe sähköpostin lähetyksessä');
+        }
+    };
 
     return (
         <div className="results-container">
@@ -50,7 +51,8 @@ function Result() {
                 </div>
                 <div className="results-form-section">
                     <h2>Ota tarjous If:in syntymättömän lapsen vakuutuksesta niin voit voittaa vuoden vaipat Liberolta!</h2>
-                    <form className="results-form" onSubmit={handleSubmit}>
+                    {/* Ei tarvitse enää onSubmit, vain napin klikkaus */}
+                    <div className="results-form">
                         <input
                             type="text"
                             placeholder="Nimi"
@@ -72,12 +74,13 @@ function Result() {
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                         />
-                        <button type="submit">Osallistu</button>
+                        {/* Muutettu: nappi kutsuu handleSubmit suoraan */}
+                        <button type="button" onClick={handleSubmit}>Osallistu</button>
                         {submissionStatus && <p className="submission-status">{submissionStatus}</p>}
                         <footer className="footer">
                             Powered by Birra Solutions
                         </footer>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
