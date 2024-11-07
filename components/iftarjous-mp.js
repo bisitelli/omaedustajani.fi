@@ -3,7 +3,7 @@ import '../styles/millainen-mp-olet.css'; // Varmista, että CSS-tiedostosi on m
 
 const handleSubmit = async (formData) => {
   try {
-    const response = await fetch('../api/send-email', {
+    const response = await fetch('/api/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
