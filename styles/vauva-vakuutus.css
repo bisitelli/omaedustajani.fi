@@ -1,309 +1,279 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* App.css */
 
 * {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #333;
-}
 
-.app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+/* App.css */
 
-.welcome-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.welcome-box {
-  position: relative;
-  background-image: url('/images/pampers-proto5.jpg');
-  background-size: cover;
+/* Taustakontti */
+.background-container {
+  background-size: cover; /* Koko näytön kattava */
   background-position: center;
+  width: 100vw;
+  height: 100vh; /* Koko ruudun kokoinen */
   display: flex;
-  flex-direction: column;
-  background-color: black;
-  padding: 40px;
-  width: 700px;
-  height: 350px;
-  border-radius: 12px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  justify-content: center; /* Sisältö keskitetty vaakasuunnassa */
+  align-items: center; /* Sisältö keskitetty pystysuunnassa */
 }
 
-.welcome-box::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3); /* Musta overlay 50% läpinäkyvyydellä */
-  border-radius: 12px; /* Sama pyöristys kuin welcome-boxissa */
-  z-index: 1; /* Varmistaa, että overlay pysyy taustalla */
-}
-
-
-.welcome-box h2 {
-  margin-bottom: 16px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #f4f4f4;
-  position: relative;
-  z-index: 2;
-}
-
-
-.start-button {
-  background-color: #888888;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  position: relative;
-  z-index: 2;
-}
-
-.start-button:hover {
-  background-color: #999999;
-}
-
-.libero-logo {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 65px;
-  z-index: 2;
-}
-
-
-.content {
-  display: flex;
+/* Sisällön kontti */
+.content-container {
   background-color: white;
   border-radius: 10px;
-  overflow: hidden;
-  max-width: 700px;
-  width: 100%;
-  height: 400px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.image-section {
-  flex: 1.2;
-  background-color: #f0f0f0;
-}
-
-.ultrasound-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.question-section {
-  flex: 1;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  
-}
-
-h1 {
-  font-size: 1.1rem;
-  color: #000;
-  margin-bottom: 30px;
-}
-
-.options {
-  display: flex;
-  flex-direction: column;
-}
-
-.option {
-  background-color: #f0f0f0;
-  width: 300px;
-  border: none;
-  padding: 15px 20px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  font-size: 1rem;
-  text-align: left;
-}
-
-.option:hover {
-  background-color: #e0e0e0;
-}
-
-.selected {
-  background-color: #c4e7ff;
-}
-
-.results-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('/images/result-kuva.jpg');
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-}
-
-
-.results-content-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background-color: #ffffff;
-  width: 700px;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Varjo sisällölle */
+  max-width: 500px;
+  width: 100%;
+  height: 60vh;
+  text-align: center; /* Tekstin keskitys */
   opacity: 0.95;
 }
 
-.results-info-section {
-  padding: 40px 10px;
-  border-right: 1px solid #dddddd;
-}
 
-.results-info-section h2 {
-  font-size: 1.2em;
-  margin-bottom: 15px;
-}
-
-.results-info-section ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.results-info-section li {
-  margin-top: 20px;
-  font-size: 0.83em;
-  color: #333333;
-  font-weight: 600;
-}
-
-.results-form-section {
-  padding: 20px;
+.form-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
 }
 
-.results-form-section h2 {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+.fade-out {
+  opacity: 0;
 }
 
-.results-form input {
-  width: 100%;
+.fade-in {
+  opacity: 1;
+}
+
+.form-container h1 {
+  margin-bottom: 30px;
+}
+
+.form-container p {
+  margin-top: 20px;
+  font-size: 12px;
+  width: 300px;
+}
+
+
+.contact-input {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  background-color: #f4f4f4;
+  width: 60%;
   padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #cccccc;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-top: 10px;
 }
 
-.results-form button {
-  width: 100%;
-  padding: 10px;
-  background-color: #32CD32;
+
+
+.aloita-button {
+  padding: 10px 20px;
+  width: 250px;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.birra-solutions {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #888;
+  text-align: center;
+}
+
+.container-questions {
+  margin-top: 30px;
+  color: black;
+  text-align: center;
+  transition: opacity 0.5s ease-in;
+  opacity: 1;
+}
+
+.container-questions h2 {
+  margin-bottom: 20px;
+}
+
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+
+.vastaus-button {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+  padding: 20px 10px;
+  border: none;
+  border-radius: 5px;
+  width: 400px;
+  height: 80px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.vastaus-vaihto-ehdot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tarjous-container {
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.tarjous-container .tarjous-teksti {
+  font-weight: 600;
+}
+
+.tarjous-container button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.tarjous-btn {
+  background-color: #007bff;
+  padding: 20px 40px;
+  font-weight: 600;
+  color: white;
+  margin-top: 20px;
+}
+
+.tulos-btn {
+  background-color: #999;
+  padding: 10px 20px;
+  color: white;
+}
+
+.container-result h2 {
+  font-size: 30px;
+}
+
+.result-image {
+  max-width: 90%;
+  height: 300px;
+  border-radius: 8px;
+}
+
+.container-result p {
+  padding: 20px;
+}
+
+.tarjous-teksti {
   font-weight: 600;
 }
 
 
-.footer {
-  color: #888;
-  font-size: 0.7rem;
+
+.sulje-testi {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
-@media (max-width: 768px) {
-  .welcome-box {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    border-radius: 0;
+@media (max-width: 1300px) {
+  .content-container {
+    height: 90vh;
   }
 
-  .content {
-    flex-direction: column; /* Muutetaan suunta pystysuoraksi */
-    height: 100vh;
-    width: 100%;
-    border-radius: 5;
+  .container-questions {
+    margin-top: 0;
+    text-align: center;
   }
 
-  .image-section {
-    flex: none; /* Poistetaan joustavuus */
-    width: 100%; /* Kuvan osuus täyttää koko leveys */
-    height: 40vh; /* Kuvan korkeus pienennetään sopivaksi */
+  .result-image {
+    max-width: 100%;
+    height: 250px;
+    border-radius: 8px;
   }
 
-  .question-section {
-    flex: none; /* Poistetaan joustavuus */
-    width: 100%; /* Kysymysten osuus täyttää koko leveys */
-    height: 100vh;
-    padding: 20px; /* Vähennetään tilaa */
-  }
+}
 
-  .ultrasound-image {
-    object-fit: cover;
-    height: 100%; /* Kuvan korkeus täyttää säilön */
-  }
-
-  .results-container {
-    display: flex;
-    flex-direction: column; /* Asetellaan sisältö päällekkäin */
-    height: 100vh;
-    width: 100%; /* Poistetaan kiinteä korkeus mobiililaitteilla */
-    
-  }
-
-  .results-content-box {
-    display: flex; /* Käytetään flexboxia mobiililaitteilla */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Asetellaan sisällöt pystysuunnassa */
-    width: 100%;
-    height: 100vh; /* Varmistetaan, että leveys vie koko tilan */
-    box-shadow: none; /* Poistetaan varjo, jos se ei ole tarpeen */
-    opacity: 1; /* Takataan, ettei läpinäkyvyys ole liian matala */
-    border-radius: 0;
-  }
-
-  .results-info-section {
-    padding: 20px; /* Lisää paddingia mobiilissa */
-    border-right: none; /* Poistetaan oikeanpuoleinen raja */
-    border-bottom: 1px solid #dddddd; /* Lisätään alaosan raja, jotta erottelu näkyy */
-  }
-
-  .footer{
+@media (max-width: 780px) { 
+  .content-container {
+    max-width: 350px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 60vh;
+    margin-bottom: 150px;
+  }
+
+  .content-container h1 {
+    font-size: 28px;
+  }
+
+  .form-container {
+    margin-top: 0;
+  }
+
+  .contact-input {
+    width: 250px;
+  }
+
+  .vastaus-button {
+    width: 325px;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .container-questions {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .tarjous-container {
+    margin-top: 0;
+  }
+
+  .result-image {
+    height: 120px;
+    max-width: 100%;
   }
 }
+
+

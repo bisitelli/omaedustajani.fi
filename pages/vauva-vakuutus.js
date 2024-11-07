@@ -1,47 +1,86 @@
-import React, { useState } from 'react';
-import Image from 'next/image'; // Ei muuta, koska käytämme Image-komponenttia Next.js:ssä
+import React, { useState, useEffect } from 'react';
 import '../styles/vauva-vakuutus.css';
-import Question from '../components/question-vauva';
-import Results from '../components/result-vauva';
+import Questions from '../components/question-vauva';
+import Result from '../components/result-vauva';
+import Iftarjous from '../components/iftarjous-vauva'
 
 function App() {
-  const [step, setStep] = useState(1); // Alustetaan steppi 1
-  const [answers, setAnswers] = useState({}); // Alustetaan vastaukset
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [step, setStep] = useState(1);
+  const [answers, setAnswers] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
+  const [fade, setFade] = useState('fade-in');
 
-  // Siirrytään seuraavaan vaiheeseen
-  const nextStep = () => setStep(step + 1);
-  
-  // Siirrytään edelliseen vaiheeseen (jos tarpeen)
-  const prevStep = () => setStep(step - 1);
+  const validatePhoneNumber = (phone) => {
+    const phoneRegex = /^(040|041|044|045|050)\d{5,}$/;
+    return phoneRegex.test(phone);
+  };
 
-  // Kyselyn valmistuttua siirrytään tulossivulle
-  const handleComplete = () => setStep(3);
+  const handleNextStep = () => {
+    setFade('fade-out'); // Fade-out ennen vaiheen vaihtoa
+    setTimeout(() => {
+      if (step === 2) {
+        setStep(2.5); // Siirrytään extra vaiheeseen
+      } else if (step === 2.5) {
+        setStep(3); // Siirrytään lopputulokseen (tai seuraavaan vaiheeseen)
+      } else {
+        setStep(step + 1); // Jatketaan normaalisti muissa tilanteissa
+      }
+      setFade('fade-in'); // Fade-in seuraavalle vaiheelle
+    }, 500); // Animaatio kestää 500ms
+  };
+
+  useEffect(() => {
+    setFade('fade-in'); // Vaihda fade-in uuteen vaiheeseen siirtymisen jälkeen
+  }, [step]);
+
+  const handleSubmitUser = () => {
+    if (name && validatePhoneNumber(phone)) {
+      setErrorMessage(''); // Tyhjennä virheviesti, jos kaikki on ok
+      handleNextStep();
+    } else {
+      setErrorMessage('Lisää nimesi ja oikea puhelinnumero (alku 040, 041, 044, 045 tai 050).');
+    }
+  };
+
+  const resetTest = () => {
+    setName('');
+    setPhone('');
+    setAnswers({});
+    setStep(1);
+  };
 
   return (
-    <div className='app'>
-      {step === 1 && (
-        <div className="welcome-container">
-          <div className="welcome-box">
-            <button onClick={nextStep} className="start-button">
-              Aloita kysely
-            </button>
-            {/* Käytetään kuvaa public-kansiosta ilman importia */}
-            <Image src="/images/Libero-logo-1.png" alt='libero-logo' className='libero-logo' width={150} height={30} />
+    <div className='background-container'> {/* Taustakontti */}
+      <div className='content-container'> {/* Sisällön kontti */}
+        {step === 1 && (
+          <div className={`form-container ${fade}`}>
+              <input className='contact-input'
+                type="text"
+                placeholder="Nimi"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+              <input className='contact-input'
+                type="tel"
+                placeholder="Puhelinnumero"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+              />
+              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+              <button className='aloita-button' onClick={handleSubmitUser}>Aloita testi!</button>
+              <p>Lisää yhteystietosi niin pääset täyttämään testin. Yhteystietoja ei luovuteta kolmasille osapuolille. Jättämällä yhteystietosi olet mukana arvonnassa.</p>
+              <p className='birra-solutions'>Powered by Birra Solutions</p>
           </div>
-        </div>
-      )}
-      
-      {step === 2 && (
-        <div>
-          <Question setAnswers={setAnswers} onNext={nextStep} onBack={prevStep} onComplete={handleComplete} />
-        </div>
-      )}
-      
-      {step === 3 && (
-        <div>
-          <Results answers={answers} />
-        </div>
-      )}
+        )}
+
+        {step === 2 && <Questions answers={answers} setAnswers={setAnswers} onNextStep={handleNextStep} />}
+        {step === 2.5 && <Iftarjous onNextStep={handleNextStep} name={name} phone={phone} answers={answers} />}
+        {step === 3 && <Result answers={answers} resetTest={resetTest} />}
+      </div>
     </div>
   );
 }
