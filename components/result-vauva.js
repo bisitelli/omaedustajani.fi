@@ -8,30 +8,35 @@ function Result() {
     const [submissionStatus, setSubmissionStatus] = useState('');
 
     const handleSubmit = async (event) => {
-        event.preventDefault(); // Estä lomakkeen oletustoiminto
+        event.preventDefault(); // Estää lomakkeen oletustoiminnon (sivun uudelleenlataus)
+
+        const formData = {
+            name,
+            email,
+            phone,
+        };
 
         try {
-            const response = await fetch('/api/send-email', {
+            const response = await fetch('/api/send-to-sheets', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    phone,
-                    surveyType: 'Vauvavakuutus', // Survey-tyyppi määritelty täällä
-                }),
+                body: JSON.stringify(formData),
             });
 
             if (response.ok) {
-                setSubmissionStatus('Lähetys onnistui!'); // Ilmoitus onnistuneesta lähetyksestä
+                setSubmissionStatus('Tiedot vastaanotettu onnistuneesti!');
+                // Tyhjennetään kentät lomakkeen lähetyksen jälkeen
+                setName('');
+                setEmail('');
+                setPhone('');
             } else {
-                setSubmissionStatus('Lähetys epäonnistui. Yritä uudelleen.');
+                setSubmissionStatus('Virhe tietojen lähetyksessä');
             }
         } catch (error) {
-            setSubmissionStatus('Virhe lähetyksessä.');
-            console.error('Error:', error);
+            console.error('Virhe:', error);
+            setSubmissionStatus('Virhe tietojen lähetyksessä');
         }
     };
 

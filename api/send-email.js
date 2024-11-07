@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 export default async function handler(req, res) {
   // Only allow POST requests
@@ -40,6 +41,8 @@ export default async function handler(req, res) {
   } else {
     messageText += buildSurveyMessage(`Kyselyn (${surveyType})`, answers);
   }
+
+  console.log("Request method:", req.method);
 
   // Define mail options
   const mailOptions = {
