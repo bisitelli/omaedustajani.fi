@@ -22,7 +22,7 @@ const handleSubmit = async (formData) => {
 };
 
 function Iftarjous({ onNextStep, name, phone, answers }) {
-  const [fade, setFade] = useState('fade-in'); // Aloitusfade-in
+  const [fade] = useState('fade-in'); // Aloitusfade-in
 
   const handleButtonClick = (action) => {
     const formData = {
@@ -30,23 +30,22 @@ function Iftarjous({ onNextStep, name, phone, answers }) {
       phone,
       answers,
       action, // Lisätään action-tieto
-      surveyType: 'Auto',
+      surveyType: 'Vauvavakuutus',
     };
     
     handleSubmit(formData);
     
-    setFade('fade-out'); // Aloita fade-out
-    setTimeout(() => {
-      onNextStep(); // Siirry seuraavaan vaiheeseen fade-outin jälkeen
-    }, 500); // Odota animaation loppumista
+    onNextStep(); // Siirry seuraavaan vaiheeseen fade-outin jälkeen
+
   };
 
   return (
     <div className={`tarjous-container ${fade}`}>
       <h2>Voita 100€ S-ryhmän lahjakortti!</h2>
-      <p className='tarjous-teksti'>Kilpailuita autosi vakuutus If:llä. Tarjousten ottaneiden kesken arvotaan 100€ S-ryhmän lahjakortti!</p>
+      <p className='tarjous-teksti'>Ota tarjous syntymättömän lapsen vakuutuksesta ja olet mukana arvonnassa. If
+      asiantuntija auttaa sinua valitsemaan perheellesi sopivimman vakuutusturvan.</p>
       <button onClick={() => handleButtonClick('pyydä tarjous')} className='tarjous-btn'>Pyydä tarjous!</button><br /><br />
-      <button onClick={() => handleButtonClick('näytä tulos')} className='tulos-btn'>Näytä tulos</button>
+      <button onClick={() => handleButtonClick('näytä tulos')} className='tulos-btn'>Ei kiitos</button>
       <p className='birra-solutions'>Powered by Birra Solutions</p>
     </div>
   );

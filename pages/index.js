@@ -71,14 +71,7 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    const handleScrollLock = () => {
-      document.body.style.overflowY = window.innerWidth <= 768 ? 'auto' : 'hidden';
-    };
-    handleScrollLock();
-    window.addEventListener('resize', handleScrollLock);
-    return () => window.removeEventListener('resize', handleScrollLock);
-  }, []);
+  
 
   return (
     <div className="landing-page">

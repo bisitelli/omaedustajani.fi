@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oi&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 /* App.css */
 
 * {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+
 }
 
 
@@ -13,6 +16,7 @@
 
 /* Taustakontti */
 .background-container {
+  background-image: url('/images/libero-proto5.jpg'); 
   background-size: cover; /* Koko näytön kattava */
   background-position: center;
   width: 100vw;
@@ -25,14 +29,13 @@
 /* Sisällön kontti */
 .content-container {
   background-color: white;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Varjo sisällölle */
   max-width: 500px;
   width: 100%;
-  height: 60vh;
   text-align: center; /* Tekstin keskitys */
-  opacity: 0.95;
+  opacity: 0.9;
+  max-height: 450px;
 }
 
 
@@ -41,7 +44,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 150px;
+  padding: 80px 0;
   transition: opacity 0.5s ease-in-out;
   opacity: 1;
 }
@@ -100,25 +103,20 @@
 }
 
 .container-questions {
-  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
   color: black;
-  text-align: center;
   transition: opacity 0.5s ease-in;
   opacity: 1;
+  padding: 50px;
 }
 
 .container-questions h2 {
-  margin-bottom: 20px;
+  text-align: start;
+  margin-bottom: 10px;
+  font-size: 20px;
 }
 
-
-.fade-out {
-  opacity: 0;
-}
-
-.fade-in {
-  opacity: 1;
-}
 
 
 .vastaus-button {
@@ -126,11 +124,11 @@
   justify-content: center;
   text-align: center;
   margin-top: 10px;
-  padding: 20px 10px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   width: 400px;
-  height: 80px;
+  height: 50px;
   cursor: pointer;
   font-size: 14px;
 }
@@ -150,16 +148,14 @@
   opacity: 1;
 }
 
-.fade-out {
-  opacity: 0;
-}
-
-.fade-in {
-  opacity: 1;
-}
 
 .tarjous-container .tarjous-teksti {
   font-weight: 600;
+  padding: 0 10px;
+}
+
+.tarjous-container p {
+  margin-top: 10px;
 }
 
 .tarjous-container button {
@@ -169,9 +165,10 @@
   font-size: 18px;
 }
 
+
 .tarjous-btn {
   background-color: #007bff;
-  padding: 20px 40px;
+  padding: 15px 30px;
   font-weight: 600;
   color: white;
   margin-top: 20px;
@@ -183,23 +180,23 @@
   color: white;
 }
 
-.container-result h2 {
+.result-container {
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+}
+
+.result-container h2 {
+  margin-bottom: 10px;
   font-size: 30px;
+
 }
 
-.result-image {
-  max-width: 90%;
-  height: 300px;
-  border-radius: 8px;
+
+.result-container button {
+  margin-top: 20px;
 }
 
-.container-result p {
-  padding: 20px;
-}
-
-.tarjous-teksti {
-  font-weight: 600;
-}
 
 
 
@@ -220,7 +217,7 @@
   }
 
   .container-questions {
-    margin-top: 0;
+    min-height: 80vh;
     text-align: center;
   }
 
@@ -232,13 +229,14 @@
 
 }
 
-@media (max-width: 780px) { 
+@media (max-width: 780px) {
   .content-container {
     max-width: 350px;
+    max-height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    height: 70vh;
     margin-bottom: 150px;
   }
 
@@ -255,15 +253,22 @@
   }
 
   .vastaus-button {
-    width: 325px;
+    width: 270px;
     padding: 5px;
     font-size: 14px;
     font-weight: 500;
   }
 
   .container-questions {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
     margin-top: 0;
     text-align: center;
+  }
+
+  .container-questions h2 {
+    font-size: 16px;
   }
 
   .tarjous-container {
