@@ -18,7 +18,7 @@ function Result() {
         };
 
         try {
-            const response = await fetch('/api/send-to-sheets', {
+            const response = await fetch('/api/send-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,19 +27,14 @@ function Result() {
             });
 
             if (response.ok) {
-                setSubmissionStatus('Tiedot vastaanotettu onnistuneesti!');
-                // Tyhjennetään kentät lomakkeen lähetyksen jälkeen
-                setName('');
-                setEmail('');
-                setPhone('');
+                console.log('Sähköposti lähetetty onnistuneesti');
             } else {
-                setSubmissionStatus('Virhe tietojen lähetyksessä');
+                console.log('Virhe sähköpostin lähetyksessä');
             }
-        } catch (error) {
-            console.error('Virhe:', error);
-            setSubmissionStatus('Virhe tietojen lähetyksessä');
-        }
-    };
+            } catch (error) {
+                console.error('Virhe:', error);
+            }
+        };
 
     return (
         <div className="results-container">

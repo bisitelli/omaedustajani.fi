@@ -27,28 +27,6 @@ function Result({ answers, name, phone, resetTest }) {
 
   const result = getResult();
 
-  const handleSubmit = async () => {
-    console.log('Handlesubmit kutsuttu')
-    try {
-      const response = await fetch('http://localhost:5000/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          answers: answers,
-        }),
-      });
-      const data = await response.text();
-      console.log(data); // Tarkista vastauksen loki
-    } catch (error) {
-      console.error('Virhe sähköpostin lähettämisessä:', error);
-    }
-  };
-
-
   useEffect(() => {
     handleSubmit();
   });
