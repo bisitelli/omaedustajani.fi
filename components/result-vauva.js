@@ -14,6 +14,7 @@ function Result() {
             name,
             email,
             phone,
+            answers,
         };
 
         try {
