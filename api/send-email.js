@@ -31,7 +31,7 @@ export default async function handler(req, res) {
 
   // Build survey-specific message text
   if (surveyType === 'Auto') {
-    messageText += buildSurveyMessage('Auto-kyselyn', answers ,action);
+    messageText += buildSurveyMessage('Auto-kyselyn', answers, action);
   } else if (surveyType === 'Moottoripyörä') {
     messageText += buildSurveyMessage('Moottoripyörä-kyselyn', answers, action);
   } else if (surveyType === 'Vauvavakuutus') {
@@ -39,7 +39,7 @@ export default async function handler(req, res) {
   } else if (surveyType === 'Vakuutustiedot') {
     messageText += buildSurveyMessage('Vakuutustiedot-kyselyn', answers);
   } else {
-    messageText += buildSurveyMessage(`Kyselyn (${surveyType})`, answers);
+    messageText += buildSurveyMessage(`Kyselyn (${surveyType})`, answers, action);
   }
 
   console.log("Request method:", req.method);
@@ -62,12 +62,14 @@ export default async function handler(req, res) {
 }
 
 // Helper function to build the message text for each survey
-function buildSurveyMessage(surveyName, answers) {
+function buildSurveyMessage(surveyName, answers, action) {
   let message = `\n\n${surveyName} vastaukset:\n`;
   // Iterate over the answers and format them
   message += Object.entries(answers)
     .map(([question, answer]) => `${question}: ${answer}`)
     .join('\n');
+
+  message += Object.entries(action)
   // If there's a "wantsOffer" field, append it
   if (answers.wantsOffer !== undefined) {
     message += `\nTarjouksen haluaminen: ${answers.wantsOffer ? 'Kyllä' : 'Ei'}`;
