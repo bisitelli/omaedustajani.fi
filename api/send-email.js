@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   const formData = req.body;
-  const { surveyType, name, phone, email, answers } = formData;
+  const { surveyType, name, phone, email, answers, action } = formData;
 
   // Check if answers is valid
   if (!answers || typeof answers !== 'object') {
@@ -31,11 +31,11 @@ export default async function handler(req, res) {
 
   // Build survey-specific message text
   if (surveyType === 'Auto') {
-    messageText += buildSurveyMessage('Auto-kyselyn', answers);
+    messageText += buildSurveyMessage('Auto-kyselyn', answers ,action);
   } else if (surveyType === 'Moottoripyörä') {
-    messageText += buildSurveyMessage('Moottoripyörä-kyselyn', answers);
+    messageText += buildSurveyMessage('Moottoripyörä-kyselyn', answers, action);
   } else if (surveyType === 'Vauvavakuutus') {
-    messageText += buildSurveyMessage('Vauvavakuutus-kyselyn', answers);
+    messageText += buildSurveyMessage('Vauvavakuutus-kyselyn', answers, action);
   } else if (surveyType === 'Vakuutustiedot') {
     messageText += buildSurveyMessage('Vakuutustiedot-kyselyn', answers);
   } else {
