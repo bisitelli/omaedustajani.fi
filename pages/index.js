@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/app.css';
-import Image from 'next/image';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -35,52 +34,47 @@ function App() {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const dataToSend = {
-      ...formData,
-      surveyType: 'Vakuutustiedot',  // Määritellään lomakkeen tyyppi
-      yhtiot: selectedCompanies.join(', '),
-    };
-
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dataToSend),
-      });
-
-      if (response.ok) {
-        alert('Viestisi on lähetetty!');
-        setFormData({
-          email: '',
-          tele: '',
-          autovakuutus: false,
-          kotivakuutus: false,
-          henkilovakuutus: false,
-          lemmikkivakuutus: false,
-        });
-        setSelectedCompanies([]);
-      } else {
-        alert('Virhe viestin lähetyksessä.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Tapahtui virhe viestin lähetyksessä.');
-    }
+  const handleRemoveCompany = (company) => {
+    setSelectedCompanies(selectedCompanies.filter(c => c !== company));
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Estetään lomakkeen oletustoiminto
+
+    // Kootaan kaikki lomaketiedot
+  const formToSend = {
+    email: formData.email,
+    tele: formData.tele,
+    autovakuutus: formData.autovakuutus,
+    kotivakuutus: formData.kotivakuutus,
+    henkilovakuutus: formData.henkilovakuutus,
+    lemmikkivakuutus: formData.lemmikkivakuutus,
+    selectedCompanies, // Valitut yhtiöt
+  };
+
+  try {
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formToSend),
+    });
+
+    if (response.ok) {
+      console.log('Sähköposti lähetetty onnistuneesti');
+    } else {
+      console.log('Virhe sähköpostin lähetyksessä');
+    }
+  } catch (error) {
+    console.error('Virhe:', error);
+  }
+};
 
   
 
   return (
     <div className="landing-page">
-      <header className="header">
-        <nav className="navbar">
-          <Image src="/images/If-logo.svg" alt="If Logo" width={500} height={200} />
-        </nav>
-      </header>
-
       <section className="hero">
         <div className="hero-content">
           <h1>Kilpailuta <br /> vakuutukset <br /> <span style={{ color: '#007bff' }}>helposti</span></h1>
