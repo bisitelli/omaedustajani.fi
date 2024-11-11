@@ -69,7 +69,9 @@ function buildSurveyMessage(surveyName, answers, action) {
     .map(([question, answer]) => `${question}: ${answer}`)
     .join('\n');
 
-  message += Object.entries(action)
+  if (Object.keys(action).length > 0) {
+    message += '\n\nPyydä tarjous';
+  }
   // If there's a "wantsOffer" field, append it
   if (answers.wantsOffer !== undefined) {
     message += `\nTarjouksen haluaminen: ${answers.wantsOffer ? 'Kyllä' : 'Ei'}`;
