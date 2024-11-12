@@ -110,7 +110,7 @@
   text-align: center;
   transition: opacity 0.5s ease-in;
   opacity: 1;
-  padding: 50px;
+  
 }
 
 .container-questions h2 {
@@ -228,7 +228,7 @@
 
 @media (max-width: 780px) { 
   .content-container {
-    max-width: 350px;
+    max-width: 370px;
     max-height: 400px;
     display: flex;
     justify-content: center;
@@ -237,9 +237,6 @@
     margin-bottom: 150px;
   }
 
-  .content-container h1 {
-    font-size: 28px;
-  }
 
   .form-container {
     margin-top: 0;
@@ -259,6 +256,11 @@
   .container-questions {
     margin-top: 0;
     text-align: center;
+  }
+
+  .container-questions h2 {
+    font-size: 16px;
+    padding: 0 20px;
   }
 
   .tarjous-container {
