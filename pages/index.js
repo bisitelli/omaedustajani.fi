@@ -53,7 +53,7 @@ function App() {
   };
 
   try {
-    const response = await fetch('/api/send-email', {
+    const response = await fetch('/api/send-email-landing', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
