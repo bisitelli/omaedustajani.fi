@@ -62,10 +62,15 @@
   font-size: 24px;
 }
 
-.form-container p {
+.form-container label {
   margin-top: 20px;
   font-size: 12px;
   width: 300px;
+  display: inline-block;
+}
+
+.form-container .checkbox-label input {
+  display: inline-block;
 }
 
 
@@ -149,14 +154,26 @@
 .tarjous-container {
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 50px;
   opacity: 1;
 }
 
-
 .tarjous-container .tarjous-teksti {
   font-weight: 600;
+  text-align: start;
+  font-size: 20px;
+  padding: 0 0 0 75px;
 }
+
+.tarjous-container .right-icon {
+  color: #007bff;
+  font-size: 24px;
+}
+
+.tarjous-container .tarjous-teksti-pitka {
+  margin-top: 40px;
+}
+
 
 .tarjous-container button {
   border: none;
@@ -167,16 +184,19 @@
 
 .tarjous-btn {
   background-color: #007bff;
-  padding: 20px 40px;
+  padding: 10px;
   font-weight: 600;
   color: white;
   margin-top: 20px;
+  width: 150px;
+  margin-bottom: 10px;
 }
 
 .tulos-btn {
   background-color: #999;
-  padding: 10px 20px;
+  padding: 8px;
   color: white;
+  width: 150px;
 }
 
 .container-result h2 {
@@ -268,6 +288,11 @@
 
   .tarjous-container {
     margin-top: 0;
+  }
+
+  .tarjous-container .tarjous-teksti{
+    font-size: 16px;
+    padding: 0 0 0 10px;
   }
 
   .result-image {
