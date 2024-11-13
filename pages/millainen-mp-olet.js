@@ -97,7 +97,7 @@ function App() {
           />
         )}
 
-        {step === 3 && <Result answers={answers} name={name} resetTest={resetTest} />}
+        {step === 3 && <Result answers={answers} resetTest={resetTest} />}
       </div>
     </div>
   );

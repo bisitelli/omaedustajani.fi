@@ -6,7 +6,7 @@ const questions = [
   { id: 2, text: 'Minkä ikäinen olet?', options: ['18-24', '25-45', 'Yli 45-vuotta']},
   { id: 3, text: 'Millainen auto sinulla on?', options: ['Urheiluauto, nopeus ennen kaikkea!', 'Maasturi, haluan ajaa missä tahansa säässä ja maastossa.', 'Sähköauto, ympäristöystävällisyys ja uudet innovaatiot kiinnostavat.', 'Sedan/farmari, luotan klassiseen ja varmaan valintaan.'] },
   { id: 4, text: 'Kuinka vanha autosi on?', options: ['6-10 vuotta vanha - luotettava kaveri.', '3–5 vuotta vanha – edelleen hyvässä kunnossa.', 'Yli 10 vuotta vanha – vanha, mutta uskollinen.', 'Alle 2 vuotta vanha – uutuuden huumaa!'] },
-  { id: 5, text: 'Missä ajat eniten?', options: ['Maaseudulla tai pienemmillä teillä – rauhallista, mutta joskus yllätyksiä kuten eläimiä tiellä.', 'Siellä sun täällä – ei ole tiettyä ajomaastoa.', 'Moottoriteillä tai pitkää matkaa – pitkät ajomatkat ja nopeat väylät.', 'Suunnitelen reitin vain, jos en tunne aluetta - muuten tiedän jo parhaat reitit.'] },
+  { id: 5, text: 'Missä ajat eniten?', options: ['Maaseudulla tai pienemmillä teillä – rauhallista, mutta joskus yllätyksiä tiellä.', 'Siellä sun täällä – ei ole tiettyä ajomaastoa.', 'Moottoriteillä tai pitkää matkaa – pitkät ajomatkat ja nopeat väylät.', 'Suunnitelen reitin vain, jos en tunne aluetta - muuten tiedän jo parhaat reitit.'] },
   { id: 6, text: 'Miten tärkeänä pidät autosi vakuutusta?', options: ['Erittäin tärkeä – haluan parhaan suojan.', 'Tärkeä, mutta hinta on ratkaiseva.', 'En kovin tärkeänä, minulle riittää perustason vakuutus.'] },
   { id: 7, text: 'Maksatko mielestäsi vakuutuksesta liikaa tällä hetkellä?', options: ['Kyllä', 'En'] }
 ];

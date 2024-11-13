@@ -41,10 +41,11 @@ function Iftarjous({ onNextStep, name, phone, answers }) {
 
   return (
     <div className={`tarjous-container ${fade}`}>
-      <h2>Voita 100€ S-ryhmän lahjakortti!</h2>
-      <p className='tarjous-teksti'>Ota tarjous syntymättömän lapsen vakuutuksesta ja olet mukana arvonnassa. If
-      asiantuntija auttaa sinua valitsemaan perheellesi sopivimman vakuutusturvan.</p>
-      <button onClick={() => handleButtonClick('pyydä tarjous')} className='tarjous-btn'>Pyydä tarjous!</button><br /><br />
+      <p className='tarjous-teksti'><span className='right-icon'>✓</span> Etuhinta ensimmäiseksi vuodeksi</p>
+      <p className='tarjous-teksti'><span className='right-icon'>✓</span> Äidin henkivakuutus ilmaiseksi</p>
+      <p className='tarjous-teksti'><span className='right-icon'>✓</span> Vakuutus jo ennen rakenneultraa</p>
+      <p className='tarjous-teksti-pitka'>Vauvasi ensimmäinen vakuutus tuo mielenrauhaa.<br /> Haluaisitko hyödyntää etuhinnan?</p>
+      <button onClick={() => handleButtonClick('pyydä tarjous')} className='tarjous-btn'>Kyllä</button><br />
       <button onClick={() => handleButtonClick('näytä tulos')} className='tulos-btn'>Ei kiitos</button>
       <p className='birra-solutions'>Powered by Birra Solutions</p>
     </div>

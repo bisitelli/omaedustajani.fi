@@ -108,13 +108,13 @@
   color: black;
   transition: opacity 0.5s ease-in;
   opacity: 1;
-  padding: 50px;
 }
 
 .container-questions h2 {
   text-align: start;
   margin-bottom: 10px;
   font-size: 20px;
+  padding: 50px 50px 0 50px;
 }
 
 
@@ -144,14 +144,25 @@
 .tarjous-container {
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 50px;
   opacity: 1;
 }
 
 
 .tarjous-container .tarjous-teksti {
   font-weight: 600;
-  padding: 0 10px;
+  text-align: start;
+  font-size: 20px;
+  padding: 0 0 0 60px;
+}
+
+.tarjous-container .right-icon {
+  color: #007bff;
+  font-size: 24px;
+}
+
+.tarjous-container .tarjous-teksti-pitka {
+  margin-top: 40px;
 }
 
 .tarjous-container p {
@@ -168,16 +179,19 @@
 
 .tarjous-btn {
   background-color: #007bff;
-  padding: 15px 30px;
+  padding: 10px;
   font-weight: 600;
   color: white;
   margin-top: 20px;
+  width: 150px;
+  margin-bottom: 10px;
 }
 
 .tulos-btn {
   background-color: #999;
-  padding: 10px 20px;
+  padding: 8px;
   color: white;
+  width: 150px;
 }
 
 .result-container {
@@ -269,6 +283,8 @@
 
   .container-questions h2 {
     font-size: 16px;
+    padding: 0;
+    max-width: 270px;
   }
 
   .tarjous-container {

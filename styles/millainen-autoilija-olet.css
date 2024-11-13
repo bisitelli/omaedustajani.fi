@@ -114,10 +114,10 @@
 }
 
 .container-questions h2 {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 20px;
   text-align: start;
-  padding: 50px 0 0 50px;
+  padding: 50px 50px 0 50px;
 }
 
 
@@ -135,6 +135,7 @@
   cursor: pointer;
   font-size: 12px;
   font-weight: 600;
+  color: black;
 }
 
 
@@ -261,7 +262,8 @@
 
   .container-questions h2 {
     font-size: 16px;
-    padding: 0 20px;
+    padding: 0;
+    max-width: 325px;
   }
 
   .tarjous-container {
