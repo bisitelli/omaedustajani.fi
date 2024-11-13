@@ -35,12 +35,19 @@ function App() {
     setFade('fade-in'); // Vaihda fade-in uuteen vaiheeseen siirtymisen jälkeen
   }, [step]);
 
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+
+  const handleCheckboxChange = (event) => {
+    setCheckboxChecked(event.target.checked)
+  };
+
   const handleSubmitUser = () => {
-    if (name && validatePhoneNumber(phone)) {
+    const checkbox = document.querySelector('.checkbox')
+    if (name && validatePhoneNumber(phone) && checkbox.checked) {
       setErrorMessage(''); // Tyhjennä virheviesti, jos kaikki on ok
       handleNextStep();
     } else {
-      setErrorMessage('Lisää nimesi ja oikea puhelinnumero (alku 040, 041, 044, 045 tai 050).');
+      setErrorMessage('Lisää nimesi, oikea puhelinnumero ja hyväksy ehdot.');
     }
   };
 
@@ -70,9 +77,12 @@ function App() {
                 onChange={(e) => setPhone(e.target.value)}
                 required
               />
-              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+              {errorMessage && <p style={{ color: 'red', maxWidth: '350px', fontSize: '10px' }}>{errorMessage}</p>}
               <button className='aloita-button' onClick={handleSubmitUser}>Aloita</button>
-              <p>Lisää yhteystietosi niin pääset täyttämään testin. Yhteystietoja ei luovuteta kolmasille osapuolille. Jättämällä yhteystietosi olet mukana arvonnassa.</p>
+              <label className='checkbox-label' style={{display: 'inline-block'}}>
+                <input style={{display: 'inline-block'}} type='checkbox' className='checkbox' onChange={handleCheckboxChange} required></input>
+                Hyväksyn, että If -vakuutuksen asiantuntija voi ottaa minuun yhteyttä puhelimitse tarjotakseen vakuutusratkaisuja. Hyväksymällä osallistun myös lahjakorttiarvontaan. Tietojani ei luovuteta kolmansille osapuolille.
+              </label>
               <p className='birra-solutions'>Powered by Birra Solutions</p>
           </div>
         )}

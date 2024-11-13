@@ -61,12 +61,16 @@
   margin-bottom: 30px;
 }
 
-.form-container p {
+.form-container label {
   margin-top: 20px;
   font-size: 12px;
   width: 300px;
+  display: inline-block;
 }
 
+.form-container .checkbox-label input {
+  display: inline-block;
+}
 
 .contact-input {
   display: flex;
