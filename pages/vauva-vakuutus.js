@@ -81,7 +81,7 @@ function App() {
               <button className='aloita-button' onClick={handleSubmitUser}>Aloita</button>
               <label className='checkbox-label' style={{display: 'inline-block'}}>
                 <input style={{display: 'inline-block'}} type='checkbox' className='checkbox' onChange={handleCheckboxChange} required></input>
-                Hyväksyn, että If -vakuutuksen asiantuntija voi ottaa minuun yhteyttä puhelimitse tarjotakseen vakuutusratkaisuja. Hyväksymällä osallistun myös lahjakorttiarvontaan. Tietojani ei luovuteta kolmansille osapuolille.
+                Hyväksyn, että If -vakuutuksen asiantuntija voi ottaa minuun yhteyttä puhelimitse tarjotakseen vakuutusratkaisuja. Hyväksymällä osallistun myös vaippa-arvontaan. Tietojani ei luovuteta kolmansille osapuolille.
               </label>
               <p className='birra-solutions'>Powered by Birra Solutions</p>
           </div>
