@@ -291,6 +291,11 @@
     margin-top: 0;
   }
 
+  .tarjous-container .tarjous-teksti{
+    font-size: 16px;
+    padding: 0 0 0 20px;
+  }
+
   .result-image {
     height: 120px;
     max-width: 100%;

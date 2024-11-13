@@ -71,7 +71,7 @@ function App() {
                 required
               />
               {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-              <button className='aloita-button' onClick={handleSubmitUser}>Aloita testi!</button>
+              <button className='aloita-button' onClick={handleSubmitUser}>Aloita</button>
               <p>Lisää yhteystietosi niin pääset täyttämään testin. Yhteystietoja ei luovuteta kolmasille osapuolille. Jättämällä yhteystietosi olet mukana arvonnassa.</p>
               <p className='birra-solutions'>Powered by Birra Solutions</p>
           </div>
