@@ -3,7 +3,7 @@ import '../styles/vauva-vakuutus.css';
 
 const questions = [
   { id: 1, text: 'Onko sinulla tällä hetkellä harkinnassa vakuutuksen ottaminen syntymättömälle lapselle?', options: ['Kyllä, olen jo ottanut', 'Kyllä, harkitsen vielä', 'Ei, en näe tarvetta'] },
-  { id: 2, text: 'Kuinka tärkeänä pidät, että lapsesi on vakuutettu jo enne syntymää?', options: ['Erittäin tärkeänä', 'Melko tärkeänä', 'En kovin tärkeänä'] },
+  { id: 2, text: 'Kuinka tärkeänä pidät, että lapsesi on vakuutettu jo ennen syntymää?', options: ['Erittäin tärkeänä', 'Melko tärkeänä', 'En kovin tärkeänä'] },
   { id: 3, text: 'Tiesitkö, että syntymättömän lapsen vakuutus kattaa myös mahdollisia synnytyksessä tapahtuvia vahinkoja sekä äidille että lapselle?', options: ['Kyllä, tiedän tämän', 'En, tämä oli uutta tietoa'] },
   { id: 4, text: 'Pidätkö tärkeänä, että perheellä on taloudellista turvaa yllättävien terveyshaasteiden varalta jo ennen lapsen syntymää?', options: ['Erittäin tärkeänä', 'Kohtalaisen tärkeänä', 'En niin tärkeänä'] },
   { id: 5, text: 'Tiesitkö, että lapsen vakuutus mahdollistaa nopeamman hoitoon pääsyn ja erikoislääkäri käynnit ilman pitkää jonotusta?', options: ['Kyllä, tiedän tämän', 'En, tämä oli uutta tietoa'] },

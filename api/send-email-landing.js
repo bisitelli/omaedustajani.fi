@@ -23,17 +23,17 @@ export default async function handler(req, res) {
             to: 'julius.sciarra@if.fi', // Vaihda tähän oikea vastaanottajan osoite
             subject: 'Yhteydenotto kotisivulta',
             text: `
-        Uusi vakuutuskysely:
-        Sähköposti: ${email}
-        Puhelinnumero: ${tele}
-        Vakuutukset:
-        Ajoneuvo: ${autovakuutus ? 'Kyllä' : 'Ei'}
-        Koti: ${kotivakuutus ? 'Kyllä' : 'Ei'}
-        Henkilö: ${henkilovakuutus ? 'Kyllä' : 'Ei'}
-        Lemmikki: ${lemmikkivakuutus ? 'Kyllä' : 'Ei'}
-        Nykyinen vakuutusyhtiö(t): ${selectedCompanies.join(', ')}
-      `,
-        };
+            Uusi vakuutuskysely:
+            Sähköposti: ${email}
+            Puhelinnumero: ${tele}
+            Vakuutukset:
+            Ajoneuvo: ${autovakuutus ? 'Kyllä' : 'Ei'}
+            Koti: ${kotivakuutus ? 'Kyllä' : 'Ei'}
+            Henkilö: ${henkilovakuutus ? 'Kyllä' : 'Ei'}
+            Lemmikki: ${lemmikkivakuutus ? 'Kyllä' : 'Ei'}
+            Nykyinen vakuutusyhtiö(t): ${selectedCompanies.join(', ')}
+            `,
+            };
 
         // Lähetä sähköposti
         await transporter.sendMail(mailOptions);
