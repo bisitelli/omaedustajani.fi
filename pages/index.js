@@ -14,7 +14,7 @@ function App() {
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdownin aukiolotila
 
-  const handleChange = (e) => {
+  const handleChange = (formData) => {
     const { name, type, checked, value } = e.target;
 
     if (type === 'checkbox') {
@@ -46,7 +46,7 @@ function App() {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (formData) => {
     e.preventDefault();
 
     const answers = {
