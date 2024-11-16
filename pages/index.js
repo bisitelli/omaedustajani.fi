@@ -49,7 +49,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const dataToSend = {
+    const answers = {
       email: formData.email,
       tele: formData.tele,
       autovakuutus: formData.autovakuutus ? "On" : "Ei ole",
@@ -60,12 +60,12 @@ function App() {
     };
 
     // Lähetetään data palvelimelle
-    fetch('/api/send-email-landing', {
+    fetch('/api/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(dataToSend)
+      body: JSON.stringify(answers)
     })
     .then((response) => response.text())
     .then((data) => {

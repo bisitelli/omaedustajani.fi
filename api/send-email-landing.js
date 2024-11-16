@@ -1,47 +1,33 @@
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 export default async function handler(req, res) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ message: 'Method not allowed' });
-    }
+    if (req.method === 'POST') {
+        const { email, tele, autovakuutus, kotivakuutus, henkilovakuutus, lemmikkivakuutus, yhtiot } = req.body;
 
-    const { email, tele, autovakuutus, kotivakuutus, henkilovakuutus, lemmikkivakuutus, selectedCompanies } = req.body;
+        let transporter = nodemailer.createTransport({
+            service: 'gmail', // tai muu sähköpostipalvelu
+            auth: {
+                user: process.env.EMAIL, // Gmail-tili tai muu tili
+                pass: process.env.PASSWORD, // Oikea salasana tai sovelluksen salasana
+            },
+        });
 
-    // Luo Nodemailer-kuljetin
-    const transporter = nodemailer.createTransport({
-        service: 'gmail', // Käytetään Gmail-palvelua, voit vaihtaa palveluntarjoajan tarpeesi mukaan
-        auth: {
-            user: process.env.EMAIL_USER, // Sähköpostitilin käyttäjänimi ympäristömuuttujista
-            pass: process.env.EMAIL_PASS, // Sähköpostitilin salasana ympäristömuuttujista
-        },
-    });
-
-    try {
-        // Valmista sähköpostiviesti
         const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: 'julius.sciarra@if.fi', // Vaihda tähän oikea vastaanottajan osoite
-            subject: 'Yhteydenotto kotisivulta',
-            text: `
-            Uusi vakuutuskysely:
-            Sähköposti: ${email}
-            Puhelinnumero: ${tele}
-            Vakuutukset:
-            Ajoneuvo: ${autovakuutus ? 'Kyllä' : 'Ei'}
-            Koti: ${kotivakuutus ? 'Kyllä' : 'Ei'}
-            Henkilö: ${henkilovakuutus ? 'Kyllä' : 'Ei'}
-            Lemmikki: ${lemmikkivakuutus ? 'Kyllä' : 'Ei'}
-            Nykyinen vakuutusyhtiö(t): ${selectedCompanies.join(', ')}
-            `,
-            };
+            from: email || process.env.AUTH_EMAIL, // Lähettäjän sähköposti (voi olla myös oma sähköpostisi)
+            to: 'julius.sciarra@if.fi', // Vastaanottajan sähköposti
+            subject: 'Tarjouspyyntö',
+            text: `Sähköposti: ${email}\nPuhelinnumero: ${tele}\nVakuutukset: ${autovakuutus}, ${kotivakuutus}, ${henkilovakuutus}, ${lemmikkivakuutus}\nYhtiöt: ${yhtiot}`,
+        };
 
-        // Lähetä sähköposti
-        await transporter.sendMail(mailOptions);
-
-        // Palauta onnistumisviesti
-        return res.status(200).json({ message: 'Sähköposti lähetetty onnistuneesti' });
-    } catch (error) {
-        console.error('Virhe sähköpostin lähetyksessä:', error);
-        return res.status(500).json({ message: 'Virhe sähköpostin lähetyksessä' });
+        try {
+            await transporter.sendMail(mailOptions);
+            res.status(200).send('Viesti lähetetty onnistuneesti!');
+        } catch (error) {
+            console.error('Error sending email:', error);
+            res.status(500).send('Virhe sähköpostin lähetyksessä');
+        }
+    } else {
+        res.status(405).send('Method Not Allowed');
     }
 }

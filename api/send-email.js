@@ -37,7 +37,7 @@ export default async function handler(req, res) {
   } else if (surveyType === 'Vauvavakuutus') {
     messageText += buildSurveyMessage('Vauvavakuutus-kyselyn', answers, action);
   } else if (surveyType === 'Vakuutustiedot') {
-    messageText += buildSurveyMessage('Vakuutustiedot-kyselyn', answers);
+    messageText += buildSurveyMessage('Vakuutustiedot-kyselyn', dataToSend);
   } else {
     messageText += buildSurveyMessage(`Kyselyn (${surveyType})`, answers, action);
   }
