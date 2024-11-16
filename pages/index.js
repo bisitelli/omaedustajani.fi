@@ -12,14 +12,22 @@ function App() {
   });
 
   const [selectedCompanies, setSelectedCompanies] = useState([]);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Dropdownin aukiolotila
 
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value,
-    });
+
+    if (type === 'checkbox') {
+      setFormData({
+        ...formData,
+        [name]: checked,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const handleCompanySelection = (company) => {
@@ -30,46 +38,54 @@ function App() {
     }
   };
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
   const handleRemoveCompany = (company) => {
     setSelectedCompanies(selectedCompanies.filter(c => c !== company));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // Estetään lomakkeen oletustoiminto
-
-    // Kootaan kaikki lomaketiedot
-  const formToSend = {
-    email: formData.email,
-    tele: formData.tele,
-    autovakuutus: formData.autovakuutus,
-    kotivakuutus: formData.kotivakuutus,
-    henkilovakuutus: formData.henkilovakuutus,
-    lemmikkivakuutus: formData.lemmikkivakuutus,
-    selectedCompanies, // Valitut yhtiöt
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
-  try {
-    const response = await fetch('/api/send-email-landing', {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const dataToSend = {
+      email: formData.email,
+      tele: formData.tele,
+      autovakuutus: formData.autovakuutus ? "On" : "Ei ole",
+      kotivakuutus: formData.kotivakuutus ? "On" : "Ei ole",
+      henkilovakuutus: formData.henkilovakuutus ? "On" : "Ei ole",
+      lemmikkivakuutus: formData.lemmikkivakuutus ? "On" : "Ei ole",
+      yhtiot: selectedCompanies.join(', '),
+    };
+
+    // Lähetetään data palvelimelle
+    fetch('/api/send-email-landing', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formToSend),
+      body: JSON.stringify(dataToSend)
+    })
+    .then((response) => response.text())
+    .then((data) => {
+      alert('Viestisi on lähetetty!');
+      // Nollaa lomake
+      setFormData({
+        email: '',
+        tele: '',
+        autovakuutus: false,
+        kotivakuutus: false,
+        henkilovakuutus: false,
+        lemmikkivakuutus: false,
+      });
+      setSelectedCompanies([]);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('Tapahtui virhe viestin lähetyksessä.');
     });
-
-    if (response.ok) {
-      console.log('Sähköposti lähetetty onnistuneesti');
-    } else {
-      console.log('Virhe sähköpostin lähetyksessä');
-    }
-  } catch (error) {
-    console.error('Virhe:', error);
-  }
-};
+  };
 
   
 
