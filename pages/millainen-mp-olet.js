@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import '../styles/millainen-mp-olet.css';
 import Questions from '../components/question-mp';
 import Result from '../components/result-mp';

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import '../styles/millainen-autoilija-olet.css';
 import Questions from '../components/question-autoilija';
 import Result from '../components/result-autoilija';
@@ -80,10 +81,11 @@ function App() {
               />
               {errorMessage && <p style={{ color: 'red', maxWidth: '350px', fontSize: '10px' }}>{errorMessage}</p>}
               <button className='aloita-button' onClick={handleSubmitUser}>Aloita</button>
-              <label className='checkbox-label' style={{display: 'inline-block'}}>
-                <input style={{display: 'inline-block'}} type='checkbox' className='checkbox' onChange={handleCheckboxChange} required></input>
-                Hyväksyn, että If -vakuutuksen asiantuntija voi ottaa minuun yhteyttä puhelimitse tarjotakseen vakuutusratkaisuja. Hyväksymällä osallistun myös lahjakorttiarvontaan. Tietojani ei luovuteta kolmansille osapuolille.
-              </label>
+              <label className='checkbox-label' style={{ display: 'flex', textAlign: "center", justifyContent: "center" }}>
+                            <input style={{ display: 'inline-block' }} type='checkbox' className='checkbox' onChange={handleCheckboxChange} required></input>
+                            Hyväksy {" "} <Link href="/kilpailuehdot" target="_blank">
+                            kilpailun ehdot</Link>.
+                        </label>
               <p className='birra-solutions'>Powered by Birra Solutions</p>
           </div>
         )}
